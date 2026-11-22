@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore Bangladesh — A little closer to wonder</title>
+  <meta name="description" content="Find places to visit in Bangladesh by division and district, browse a photo gallery, estimate your travel cost and build a day-by-day itinerary.">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cinema-edition">
+<noscript><p class="noscript">Enable JavaScript to browse destinations and use the trip planner.</p></noscript>
+  <a class="skip" href="#explore">Skip to destinations</a>
+
+  <!-- ===== Header / Navbar ===== -->
+  <header class="site-header">
+    <div class="reading-progress" aria-hidden="true"><span id="reading-progress"></span></div>
+    <div class="wrap bar">
+      <a class="brand" href="#top" aria-label="Explore Bangladesh home">
+        <svg class="flag" viewBox="0 0 30 20" aria-hidden="true">
+          <rect width="30" height="20" rx="3" fill="#0f6b3f"/>
+          <circle cx="13" cy="10" r="5.5" fill="#d7263d"/>
+        </svg>
+        <span>explore<span class="brand-second">Bangladesh.</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Main">
+        <a href="#journeys">Discover</a><a href="#explore">Destinations</a>
+        <a href="#gallery">Travel atlas</a>
+        <a href="#calculator">Trip budget</a>
+        <a href="#itinerary">My itinerary</a>
+      </nav><button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to dark mode" aria-pressed="false">◐</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero cinema-hero" aria-labelledby="hero-title">
+      <div id="cinema-hero-media" class="cinema-media"></div>
+      <div class="cinema-shade" aria-hidden="true"></div>
+      <div class="wrap cinema-copy">
+        <p class="eyebrow">EIGHT DIVISIONS. A THOUSAND LITTLE WONDERS.</p>
+        <h1 id="hero-title"><span class="title-mask"><span class="hero-title-script">Beautiful</span></span><span class="title-mask"><span class="hero-title-country">Bangladesh.</span></span></h1>
+        <div class="cinema-bottom"><p lang="bn">চেনা দেশের অচেনা গল্পে হারিয়ে যাই।</p><div class="hero-actions"><a href="#journeys" class="btn">Start exploring <span>↗</span></a><button id="surprise" class="btn-text" type="button">Surprise me ↗</button></div></div>
+      </div>
+      <a class="scroll-cue" href="#travel-intro"><span>SCROLL TO DISCOVER</span><i aria-hidden="true">↓</i></a>
+      <span class="hero-location">01 / COX’S BAZAR · THE COAST</span>
+    </section>
+    <section id="travel-intro" class="travel-intro">
+      <div class="wrap"><p class="eyebrow">GO A LITTLE FURTHER. FEEL A LITTLE MORE.</p>
+        <p class="scroll-statement" id="scroll-statement">Follow the river. Feel the sea breeze. Find a story in an old city. Your next beautiful journey is closer than you think.</p>
+        <div class="intro-foot"><span aria-label="27 places to discover"><span class="motion-counter" data-count="27" aria-hidden="true">27</span> PLACES TO DISCOVER</span><a class="btn-text" href="#explore">Find your somewhere ↗</a></div>
+      </div>
+    </section>
+    <section id="journeys" class="journeys" aria-labelledby="journey-title">
+      <div class="wrap"><div class="journey-header"><p class="eyebrow">FOUR WAYS TO FEEL BANGLADESH<br><button class="story-preview-trigger" id="story-preview-open" type="button" aria-haspopup="dialog">Preview the four stories <span aria-hidden="true">↗</span></button></p><h2 id="journey-title">Let the place<br>set the pace.</h2></div>
+        <div class="journey-layout"><div class="journey-copy" id="journey-copy"></div><div class="journey-visual" id="journey-visual" aria-hidden="true"></div></div>
+      </div>
+    </section>
+    <section class="division-strip"><div class="wrap"><p id="hero-label" class="eyebrow">EIGHT WAYS TO GET LOST</p><div class="division-chips" id="division-chips" role="group" aria-labelledby="hero-label"></div></div></section>
+
+    <!-- ===== Destinations + filters ===== -->
+    <section class="section" id="explore">
+      <div class="wrap">
+        <p class="eyebrow">01 / FIND YOUR SOMEWHERE</p><div class="section-heading"><h2>Where will curiosity<br>take you?</h2><p class="heading-aside">A coast, a forest, a little history.<br>There’s a place for every mood.</p></div>
+        <p class="section-sub">Explore 27 places across Bangladesh. Pick a mood, then make a plan.</p>
+
+        <form class="filters" id="filters" autocomplete="off">
+          <label class="field">
+            <span>Search</span>
+            <input type="search" id="f-search" placeholder="Try tea, beach or Sylhet">
+          </label>
+          <label class="field">
+            <span>Division</span>
+            <select id="f-division"></select>
+          </label>
+          <label class="field">
+            <span>District</span>
+            <select id="f-district"></select>
+          </label>
+          <label class="field">
+            <span>Sort by</span>
+            <select id="f-sort">
+              <option value="name">Name (A to Z)</option>
+              <option value="cost">Lowest daily cost</option>
+              <option value="distance">Closest to Dhaka</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="chips" id="type-chips" role="group" aria-label="Type of place"></div>
+
+        <div class="discovery-tools"><button class="btn-outline" id="saved-filter" type="button" aria-pressed="false">♡ Saved places <span id="saved-count">0</span></button><label class="budget-filter" for="f-budget">Local budget / day <strong id="budget-label">Any budget</strong><input id="f-budget" type="range" min="250" max="1500" step="50" value="1500"></label><div class="view-toggle" role="group" aria-label="Destination layout"><button id="view-grid" type="button" aria-label="Grid view" aria-pressed="true">▦</button><button id="view-list" type="button" aria-label="List view" aria-pressed="false">☰</button></div></div><div class="result-row">
+          <p id="result-count" aria-live="polite"></p>
+          <button class="btn-text" type="button" id="reset-filters">Clear filters</button>
+        </div>
+
+        <div class="grid" id="cards"></div>
+        <div class="empty" id="empty" hidden>
+          <p><strong>No places match these filters.</strong></p>
+          <p>Try a different district or clear the filters to see all destinations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Gallery ===== -->
+    <section class="section section-tint" id="gallery">
+      <div class="wrap">
+        <p class="eyebrow">02 / THE TRAVEL ATLAS</p><h2>Different landscapes.<br>The same sense of wonder.</h2>
+        <p class="section-sub">Your destination photos and an illustrated collection of landscapes. Select a place to read its story; use arrow keys to explore. Where no photo is available, the artwork is illustrative.</p>
+        <div class="gallery" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <!-- ===== Cost calculator ===== -->
+    <section class="section" id="calculator">
+      <div class="wrap">
+        <p class="eyebrow">03 / BIG MEMORIES, SMALLER GUESSWORK</p><h2>A little planning.<br>A lot more freedom.</h2>
+        <p class="section-sub">Build a sample budget from Dhaka. These learning-project estimates are not live fares or confirmation of transport availability.</p>
+
+        <div class="calc">
+          <form class="calc-form" id="calc-form" autocomplete="off">
+            <label class="field">
+              <span>Destination</span>
+              <select id="c-dest"></select>
+            </label>
+            <div class="row-2">
+              <label class="field">
+                <span>Days</span>
+                <input type="number" id="c-days" min="1" max="14" value="3">
+              </label>
+              <label class="field">
+                <span>Travellers</span>
+                <input type="number" id="c-people" min="1" max="30" value="2">
+              </label>
+            </div>
+            <label class="field">
+              <span>Transport from Dhaka</span>
+              <select id="c-transport">
+                <option value="bus">Non-AC bus</option>
+                <option value="acbus" selected>AC bus</option>
+                <option value="train">Train</option>
+                <option value="air">Flight</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Hotel</span>
+              <select id="c-hotel">
+                <option value="budget">Budget</option>
+                <option value="standard" selected>Standard</option>
+                <option value="premium">Premium</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Food</span>
+              <select id="c-food">
+                <option value="budget">Local food</option>
+                <option value="standard" selected>Restaurants</option>
+                <option value="premium">Resort dining</option>
+              </select>
+            </label>
+          </form>
+
+          <div class="calc-result" aria-live="polite">
+            <p class="total-label">Estimated total</p>
+            <p class="total" id="c-total">৳0</p>
+            <p class="per-person" id="c-per">৳0 per person</p>
+            <p class="calc-warn" id="c-warn" hidden></p>
+            <ul class="breakdown" id="c-breakdown"></ul>
+            <button class="btn" type="button" id="c-add">Add to my itinerary</button>
+            <p class="fine">Prices change by season and operator. Check current fares before you book.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Itinerary builder ===== -->
+    <section class="section section-tint" id="itinerary">
+      <div class="wrap">
+        <p class="eyebrow">04 / YOUR NEXT CHAPTER</p><h2>Good trips start<br>with a little daydream.</h2>
+        <p class="section-sub">Use “Add to itinerary” on any destination. Your plan is saved in this browser.</p>
+
+        <div class="ticket">
+          <div class="ticket-head">
+            <label class="field inline">
+              <span>Trip length</span>
+              <select id="i-days"></select>
+            </label>
+            <div class="ticket-actions">
+              <button class="btn-outline" type="button" id="i-export">Export plan ↓</button><button class="btn-outline" type="button" id="i-print">Print / PDF</button>
+              <button class="btn-outline danger" type="button" id="i-clear">Clear plan</button>
+            </div>
+          </div>
+
+          <div class="tabs" id="i-tabs" role="tablist" aria-label="Trip days"></div>
+
+          <div class="ticket-body" id="i-panel" role="tabpanel">
+            <ol class="stops" id="i-list"></ol>
+            <p class="empty-note" id="i-empty">Nothing planned for this day yet. Add a destination from the list above.</p>
+          </div>
+
+          <div class="ticket-stub">
+            <p><strong id="i-count">0 stops</strong> across <span id="i-daysused">0 days</span></p>
+            <p>Entry and local transport, per person: <strong id="i-cost">৳0</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-top"><a class="brand" href="#top">explore Bangladesh.</a><p lang="bn">পথেই হোক নতুন গল্পের শুরু।</p><a href="#top">Back to top ↑</a></div><p>Check current access and transport before travelling.</p>
+      <p class="copyright">© 2026 Md. Shahrin Rahman Suborno. All rights reserved.</p>
+      <p>Department of Information and Communication Technology · 2nd Batch</p>
+      <p>Khwaja Yunus Ali University, Enayetpur, Sirajganj</p>
+    </div>
+  </footer>
+
+  <!-- Gallery lightbox -->
+  <dialog id="lightbox" aria-labelledby="lb-title">
+    <div class="lb-media" id="lb-media"></div>
+    <div class="lb-text">
+      <h3 id="lb-title"></h3>
+      <p class="lb-meta" id="lb-meta"></p>
+      <p id="lb-desc"></p>
+    </div>
+    <div class="lb-actions">
+      <button class="btn-outline" type="button" id="lb-prev">Previous</button>
+      <button class="btn-outline" type="button" id="lb-next">Next</button>
+      <a class="btn-outline" id="lb-map" target="_blank" rel="noopener noreferrer">Find on Maps ↗</a><button class="btn" type="button" id="lb-add">Add to itinerary</button>
+      <button class="btn-text" type="button" id="lb-close">Close</button>
+    </div>
+  </dialog>
+
+  <!-- MOTION: story preview uses a dialog to preserve the page's scroll layout. -->
+  <dialog id="story-preview" class="story-preview" aria-labelledby="story-preview-title">
+    <div class="story-preview-top"><h2 id="story-preview-title" tabindex="-1">Four ways to feel Bangladesh</h2><button type="button" class="btn-text" id="story-preview-close" aria-label="Close story preview">Close ×</button></div>
+    <div id="featured-story-slides" class="featured-story-slides" role="region" aria-roledescription="carousel" aria-label="Featured travel stories"></div>
+    <div class="story-preview-controls"><button type="button" class="btn-outline" id="story-preview-prev" aria-label="Previous story">←</button><span id="story-preview-counter" aria-live="off">01 / 04</span><button type="button" class="btn-outline" id="story-preview-next" aria-label="Next story">→</button><button type="button" class="btn-outline" id="story-preview-play" aria-pressed="false">Pause stories</button></div>
+    <div class="story-autoplay-track" aria-hidden="true"><span id="story-autoplay-progress"></span></div>
+  </dialog>
+
+  <div id="print-plan"></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
