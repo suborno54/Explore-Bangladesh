@@ -2,7 +2,7 @@
 
 A responsive travel website for exploring 27 tourist destinations across the eight divisions of Bangladesh.
 
-Live demo: [Insert GitHub Pages link here]
+Live demo: https://suborno54.github.io/Explore-Bangladesh/
 
 ## Features
 
